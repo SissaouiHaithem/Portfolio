@@ -179,11 +179,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
-<<<<<<< HEAD
-*/
-=======
+
 */
 
 
-
->>>>>>> c7b189596c50bf74495b5129cb33a5bef1a3d502
