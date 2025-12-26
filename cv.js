@@ -141,21 +141,27 @@ const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
 //Nouvelle Version ajouté par Haitehm pour fonctionner #Certifications
+
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-    let clickedPage = this.innerHTML.trim().toLowerCase(); 
 
-    for (let j = 0; j < pages.length; j++) {
-      let currentPage = pages[j].dataset.page.toLowerCase();
+    const clickedPage = this.innerHTML.trim().toLowerCase();
 
-      if (clickedPage === currentPage) {
-        pages[j].classList.add("active");
-        navigationLinks[i].classList.add("active");
-      } else {
-        pages[j].classList.remove("active");
-        navigationLinks[j].classList.remove("active");
+    // 1) reset propre
+    pages.forEach(p => p.classList.remove("active"));
+    navigationLinks.forEach(l => l.classList.remove("active"));
+
+    // 2) active page correspondante
+    pages.forEach(p => {
+      if (p.dataset.page.trim().toLowerCase() === clickedPage) {
+        p.classList.add("active");
       }
-    }
+    });
+
+    // 3) active lien cliqué
+    this.classList.add("active");
+
+    window.scrollTo(0, 0);
   });
 }
 
